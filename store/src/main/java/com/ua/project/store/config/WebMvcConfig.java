@@ -1,4 +1,4 @@
-package config;
+package com.ua.project.store.config;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;

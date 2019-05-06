@@ -1,4 +1,4 @@
-package config;
+package com.ua.project.store.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import security.CustomUserDetailsService;
+import com.ua.project.store.security.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity

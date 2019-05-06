@@ -1,4 +1,4 @@
-package security;
+package com.ua.project.store.security;
 
 import java.util.Collection;
 import java.util.List;
