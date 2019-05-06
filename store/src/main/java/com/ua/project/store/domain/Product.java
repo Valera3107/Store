@@ -1,10 +1,25 @@
 package com.ua.project.store.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="product")
 public class Product {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+	
+	@Column
 	private String title;
+	
+	@Column
 	private String name;
+	
+	@Column
 	private String description;
+	
+	@Column
 	private Double price;
 
 	public Product() {

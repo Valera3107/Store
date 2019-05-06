@@ -1,35 +1,81 @@
 package com.ua.project.store.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user")
 public class User {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+	
+	@Column
 	private String login;
+	
+	@Column
 	private String name;
+	
+	@Column
 	private String surname;
+	
+	@Enumerated(EnumType.STRING)
 	private UserRole role;
+	
+	@Column
 	private String password;
+	
+	@Column(name="password_confirm")
+	private String passwordConfirm;
 
 	public User() {
 	}
+	
+	public User(User user) {
+		this.id = user.id;
+		this.login = user.login;
+		this.name = user.name;
+		this.surname = user.surname;
+		this.role = user.role;
+		this.password = user.password;
+		this.passwordConfirm = user.passwordConfirm;
+	}
 
-	public User(String login, String name, String surname, UserRole role, String password) {
+	public User(String login, String name, String surname, UserRole role, String password, String passwordConfig) {
 		this.login = login;
 		this.name = name;
 		this.surname = surname;
 		this.role = role;
 		this.password = password;
+		this.passwordConfirm = passwordConfig;
 	}
 
-	public User(Integer id, String login, String name, String surname, UserRole role, String password) {
+	public User(Integer id, String login, String name, String surname, UserRole role, String password, String passwordConfig) {
 		this.id = id;
 		this.login = login;
 		this.name = name;
 		this.surname = surname;
 		this.role = role;
 		this.password = password;
+		this.passwordConfirm = passwordConfig;
 	}
 
 	public Integer getId() {
 		return id;
+	}
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
 	}
 
 	public void setId(Integer id) {

@@ -2,10 +2,24 @@ package com.ua.project.store.domain;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="bucket")
 public class Bucket {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+	
+	@ManyToOne(targetEntity = User.class)
+	@JoinColumn(name="user_id", referencedColumnName="id")
 	private Integer userId;
+	
+	@ManyToOne(targetEntity = Product.class)
+	@JoinColumn(name="product_id", referencedColumnName="id")
 	private Integer productId;
+	
+	@Column(name="purchase_date")
 	private Date purchaseDate;
 
 	public Bucket(Integer id, Integer userId, Integer productId, Date purchaseDate) {
