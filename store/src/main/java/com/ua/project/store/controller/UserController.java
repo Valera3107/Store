@@ -7,51 +7,60 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.ua.project.store.domain.Product;
 import com.ua.project.store.domain.User;
+import com.ua.project.store.service.ProductService;
 import com.ua.project.store.service.UserService;
 
 @Controller
 public class UserController {
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserService userService;
 
+	@Autowired
+	private ProductService productService;
 
+	@RequestMapping(value = "/registration", method = RequestMethod.GET)
+	public String registration(Model model) {
+		model.addAttribute("userForm", new User());
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        model.addAttribute("userForm", new User());
+		return "registration";
+	}
 
-        return "registration";
-    }
+	@RequestMapping(value = "/registration", method = RequestMethod.POST)
+	public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			return "registration";
+		}
+		userService.save(userForm);
 
-        if (bindingResult.hasErrors()) {
-            return "registration";
-        }
-        userService.save(userForm);
+		return "redirect:/home";
+	}
 
+	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
+	public String login(Model model, String error, String logout) {
+		if (error != null)
+			model.addAttribute("error", "Your username and password is invalid.");
 
-        return "redirect:/home";
-    }
+		if (logout != null)
+			model.addAttribute("message", "You have been logged out successfully.");
 
-    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+		return "login";
+	}
 
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public ModelAndView welcome() {
+		ModelAndView mav = new ModelAndView("home");
+		mav.addObject("products", productService.getAllProducts());
+		return mav;
+	}
 
-        return "login";
-    }
+	@RequestMapping(value = "/create-product", method = RequestMethod.GET)
+	public ModelAndView createProduct() {
+		return new ModelAndView("createProduct", "product", new Product());
+	}
 
-    @RequestMapping(value ="/home", method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "home";
-    }
-    
-    
 }
