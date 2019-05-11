@@ -1,2 +1,2 @@
 # Store
-This is project with using frameworks Spring and Hibernate for portfolio.
+This is project with using Spring framework (backend) and JSP pages with bootstrap (frontend).
