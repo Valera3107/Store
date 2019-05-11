@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ua.project.store.domain.Product;
+import com.ua.project.store.service.ProductDTOHelper;
 import com.ua.project.store.service.ProductService;
 
 @Controller

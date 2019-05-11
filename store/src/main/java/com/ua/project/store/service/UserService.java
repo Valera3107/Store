@@ -1,9 +1,6 @@
 package com.ua.project.store.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ua.project.store.config.WebSecurityConfig;
@@ -25,5 +22,9 @@ public class UserService {
 		user.setPasswordConfirm(webSecurityConfig.passwordEncoder().encode(user.getPasswordConfirm()));
 		user.setRole(UserRole.ROLE_USER);
 		userRepository.save(user);
+	}
+	
+	public User getByLogin(String login) {
+		return userRepository.findByLogin(login).get();
 	}
 }

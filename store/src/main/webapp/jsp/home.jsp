@@ -1,6 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
 			<h3 class="w3-bar-item">Menu</h3>
 			<a href="/home" class="w3-bar-item w3-button">Home</a> <a
 				href="/create-product" class="w3-bar-item w3-button">Create
-				product</a> <a href="#" class="w3-bar-item w3-button">Bucket</a>
+				product</a> <a href="/buckets" class="w3-bar-item w3-button">Bucket</a>
 		</div>
 
 		<!-- Page Content -->
@@ -62,8 +62,12 @@
 							<p>${currentProduct.description}</p>
 							<p>${currentProduct.price}</p>
 						</div>
-						<button class="w3-button w3-block w3-dark-gray">+ Add To
-							The Bucket</button>
+						
+						<form:form method="POST" action="${contextPath}/bucket" enctype="multipart/form-data">
+						<input type="hidden" value="${currentProduct.id}" class="form-control" name="productId">
+							<input type="submit" class="w3-button w3-block w3-dark-gray"
+								value="+ Add To	The Bucket">
+						</form:form>
 					</div>
 				</c:forEach>
 			</c:if>

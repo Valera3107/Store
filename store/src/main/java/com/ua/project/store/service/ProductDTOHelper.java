@@ -1,4 +1,4 @@
-package com.ua.project.store.controller;
+package com.ua.project.store.service;
 
 import java.io.IOException;
 import java.util.Base64;
