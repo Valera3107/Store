@@ -3,24 +3,27 @@ package com.ua.project.store.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name="product")
+@Table(name = "product")
 public class Product {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	@Column
 	private String title;
-	
+
 	@Column
 	private String name;
-	
+
 	@Column
 	private String description;
-	
+
 	@Column
 	private Double price;
+
+	@Lob
+	private String encodedImage;
 
 	public Product() {
 	}
@@ -38,6 +41,14 @@ public class Product {
 		this.name = name;
 		this.description = description;
 		this.price = price;
+	}
+
+	public String getEncodedImage() {
+		return encodedImage;
+	}
+
+	public void setEncodedImage(String encodedImage) {
+		this.encodedImage = encodedImage;
 	}
 
 	public Integer getId() {

@@ -44,23 +44,27 @@
 
 
 				<form:form method="POST" action="${contextPath}/addProduct"
-					modelAttribute="product">
+					enctype="multipart/form-data">
 					<table>
 						<tr>
-							<td><form:label path="name">Name</form:label></td>
-							<td><form:input path="name" /></td>
+							<td>Name:</td>
+							<td><input type="text" name="name"></td>
 						</tr>
 						<tr>
-							<td><form:label path="description">Description</form:label></td>
-							<td><form:input path="description" /></td>
+							<td>Title:</td>
+							<td><input type="text" name="title"></td>
 						</tr>
 						<tr>
-							<td><form:label path="price">Price</form:label></td>
-							<td><form:input path="price" /></td>
+							<td>Description:</td>
+							<td><input type="text" name="description"></td>
 						</tr>
 						<tr>
-							<td><form:label path="title">title</form:label></td>
-							<td><form:input path="title" /></td>
+							<td>Price:</td>
+							<td><input type="text" name="price"></td>
+						</tr>
+						<tr>
+							<td>Select image to upload:</td>
+							<td><input type="file" name="image"></td>
 						</tr>
 						<tr>
 							<td><input type="submit" value="Submit" /></td>

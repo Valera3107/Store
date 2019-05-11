@@ -54,7 +54,7 @@
 					<div class="w3-card-4" style="width: 30%">
 						<img class="w3-circle"
 							style="width: 140px; margin: auto; vertical-align: middle; display: block;"
-							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG8pC7HNbKwoDhAjQA5PDM1EGWBSBb-jWTX6eRd0rqRzYoDalG"
+							src="data:image/jpg;base64, ${currentProduct.encodedImage }"
 							alt="Alps" style="width: 100%">
 						<div class="w3-container w3-center">
 							<h3>${currentProduct.name}</h3>

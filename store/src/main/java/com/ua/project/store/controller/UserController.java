@@ -59,8 +59,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/create-product", method = RequestMethod.GET)
-	public ModelAndView createProduct() {
-		return new ModelAndView("createProduct", "product", new Product());
+	public String createProduct() {
+		return "createProduct";
 	}
 
 }
