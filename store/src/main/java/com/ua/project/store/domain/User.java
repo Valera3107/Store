@@ -10,33 +10,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	@Column
 	private String login;
-	
+
 	@Column
 	private String name;
-	
+
 	@Column
 	private String surname;
-	
-	@Column
+
+	@Enumerated(EnumType.STRING)
 	private UserRole role;
-	
+
 	@Column
 	private String password;
-	
-	@Column(name="password_confirm")
+
+	@Column(name = "password_confirm")
 	private String passwordConfirm;
 
 	public User() {
 	}
-	
+
 	public User(User user) {
 		this.id = user.id;
 		this.login = user.login;
@@ -56,7 +56,8 @@ public class User {
 		this.passwordConfirm = passwordConfig;
 	}
 
-	public User(Integer id, String login, String name, String surname, UserRole role, String password, String passwordConfig) {
+	public User(Integer id, String login, String name, String surname, UserRole role, String password,
+			String passwordConfig) {
 		this.id = id;
 		this.login = login;
 		this.name = name;
